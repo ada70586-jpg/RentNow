@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentNow — 3-комн. Ленина 84</title>
+  <link rel="stylesheet" href="../detail.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">RentNow</div>
+      <div class="header-actions">
+        <a href="../index.html" class="btn-back">← Назад к поиску</a>
+      </div>
+    </div>
+  </header>
+  <main class="container main-content">
+    <section class="property-main">
+      <div class="main-image-wrapper">
+        <img src="../img/4.webp" alt="Фото квартиры">
+      </div>
+        <div class="spec-item">
+          <div class="spec-icon"><img src="../img/strel.png"></div>
+          <div class="spec-info">
+            <span class="spec-label">Общая площадь</span>
+            <span class="spec-value">58,6 м²</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><img src="../img/room.png"></div>
+          <div class="spec-info">
+            <span class="spec-label">Комнаты</span>
+            <span class="spec-value">3-комн</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><img src="../img/lest.png"></div>
+          <div class="spec-info">
+            <span class="spec-label">Этаж</span>
+            <span class="spec-value">6 из 9</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <aside class="property-sidebar">
+      <div class="sidebar-card price-card">
+        <input type="checkbox" id="fav-toggle" class="fav-checkbox">
+        <div class="price-header">
+          <h1 class="price-title">6 900 000 ₽</h1>
+          <label for="fav-toggle" class="like-btn" title="В избранное">
+            <span class="heart-empty">♡</span>
+            <span class="heart-filled">♥</span>
+          </label>
+        </div>
+        <div class="cost-breakdown">
+          <div class="cost-row"><span class="cost-label">Оплата ЖКХ</span><span class="cost-value">3 900 ₽</span></div>
+          <div class="cost-row"><span class="cost-label">Залог</span><span class="cost-value">Нет</span></div>
+          <div class="cost-row"><span class="cost-label">Комиссия</span><span class="cost-value">нет</span></div>
+        </div>
+        <div class="contact-actions">
+          <button class="btn-primary">Написать</button>
+        </div>
+      </div>
+      <div class="sidebar-card owner-card">
+        <div class="owner-avatar">
+          <img src="../img/sobs.png" alt="Собственник"> 
+        </div>
+        <div class="owner-info">
+          <span class="owner-label">СОБСТВЕННИК</span>
+          <span class="owner-id">ID 144484007</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <footer class="simple-footer">
+    <div class="container">
+      <a href="#">О проекте</a>
+      <span class="separator">|</span>
+      <a href="#">Политика конфиденциальности</a>
+      <span class="separator">|</span>
+      <a href="#">Контакты</a>
+    </div>
+  </footer>
+  <script>
+    const checkbox = document.getElementById('fav-toggle');
+    const flatId = "4";
+    if (localStorage.getItem('flat_' + flatId) === 'true') {
+      checkbox.checked = true;
+    }
+    checkbox.onchange = function() {
+      localStorage.setItem('flat_' + flatId, this.checked);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentNow — Вход</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
+    body { 
+      background-color: #f4f6f9; 
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh; 
+    }
+    .auth-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .auth-box {
+      background-color: #7a8fa6;
+      width: 100%;
+      max-width: 450px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .auth-logo {
+      background-color: #fff;
+      color: #7a8fa6;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      display: block;
+      text-decoration: none;
+    }
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .auth-tab.active {
+      color: #fff;
+      border-bottom: 3px solid #fff;
+    }
+    .input-group { margin-bottom: 15px; }
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+    }
+    .input-hint {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      margin-top: 5px;
+      display: block;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #fff;
+      color: #7a8fa6;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover { background-color: #e0e6ed; }
+    .divider {
+      display: flex;
+      align-items: center;
+      color: rgba(255,255,255,0.7);
+      margin: 25px 0;
+      font-size: 14px;
+    }
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    .divider span { padding: 0 10px; }
+    .social-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      width: max-content;
+      margin: 0 auto;
+    }
+    .social-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+    }
+    .s-google { background: #fff; border: 1px solid #ddd; color: #DB4437; }
+    .s-vk { background: #000; }
+    .s-inst { background: #E1306C; }
+    .simple-footer { text-align: center; padding: 20px 0; border-top: 1px solid #e0e6ed; }
+    .simple-footer a { color: #888; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .simple-footer a:hover { color: #7a8fa6; text-decoration: underline; }
+    .separator { color: #ccc; margin: 0 10px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-box">
+      <a href="index.html" class="auth-logo">RentNow</a>
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="tab-login" onclick="switchMode(false)">Вход</div>
+        <div class="auth-tab" id="tab-register" onclick="switchMode(true)">Регистрация</div>
+      </div>
+      <div class="input-group">
+        <input type="email" id="auth-email" placeholder="Email">
+      </div>
+      <div class="input-group">
+        <input type="password" id="auth-pass" placeholder="Password">
+        <span class="input-hint">по номеру телефона</span>
+      </div>
+      <button class="submit-btn" id="submit-btn" onclick="handleAuth()">Войти</button>
+      <div class="divider"><span>или</span></div>
+      <div class="social-btns">
+        <a href="#" class="social-btn s-google">G</a>
+        <a href="#" class="social-btn s-vk">VK</a>
+        <a href="#" class="social-btn s-inst">IG</a>
+      </div>
+    </div>
+  </div>
+  <footer class="simple-footer">
+    <div>
+      <a href="#">О проекте</a>
+      <span class="separator">|</span>
+      <a href="#">Политика конфиденциальности</a>
+      <span class="separator">|</span>
+      <a href="#">Контакты</a>
+    </div>
+  </footer>
+  <script>
+    let isRegister = false;
+    function switchMode(register) {
+      isRegister = register;
+      document.getElementById('tab-login').classList.toggle('active', !register);
+      document.getElementById('tab-register').classList.toggle('active', register);
+      document.getElementById('submit-btn').innerText = register ? 'Зарегистрироваться' : 'Войти';
+    }
+    function handleAuth() {
+      const email = document.getElementById('auth-email').value.trim();
+      const pass = document.getElementById('auth-pass').value.trim();
+      if (!email || !pass) {
+        alert('Заполните все поля!');
+        return;
+      }
+      let users = JSON.parse(localStorage.getItem('rentnow_users')) || {};
+      users['avxadievaadelina@gmail.com'] = '12345'; 
+      if (isRegister) {
+        if (users[email]) {
+          alert('Такой Email уже есть!');
+        } else {
+          users[email] = pass;
+          localStorage.setItem('rentnow_users', JSON.stringify(users));
+          alert('Зарегистрировано! Теперь войдите.');
+          switchMode(false);
+        }
+      } else {
+        if (users[email] === pass) {
+          localStorage.setItem('currentUserEmail', email);
+          if (email === 'avxadievaadelina@gmail.com') {
+             localStorage.setItem('isAdmin', 'true');
+          } else {
+             localStorage.removeItem('isAdmin');
+          }
+          window.location.href = 'index.html';
+        } else {
+          alert('Неверный Email или пароль!');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentNow — Личный кабинет</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="profile-page">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">RentNow</a>
+      <div class="header-actions">
+        <a href="#favorites" class="icon-btn" title="Избранное">
+          <img src="img/izbr.png" alt="Избранное">
+        </a>
+        <a href="profile.html" class="icon-btn" title="Профиль">
+          <img src="img/prof.png" alt="Профиль">
+        </a>
+        <label for="menu-toggle" class="icon-btn" title="Меню">
+          <img src="img/menu.png" alt="Меню">
+        </label>
+      </div>
+    </div>
+  </header>
+  <input type="radio" name="profile-tabs" id="tab-settings" class="tab-radio" checked>
+  <input type="radio" name="profile-tabs" id="tab-favorites" class="tab-radio">
+  <input type="radio" name="profile-tabs" id="tab-myads" class="tab-radio">
+  <input type="radio" name="profile-tabs" id="tab-trash" class="tab-radio">
+  <main class="profile-layout">
+    <aside class="profile-sidebar">
+      <div class="avatar-circle" id="avatar-container">
+        <span id="avatar-text">ава</span>
+        <img id="avatar-img" src="" alt="Аватар" style="display: none;">
+      </div>
+      <div class="nickname" id="user-nickname">ник</div>
+      <div class="stars">0.0 ★★★★★</div>
+      <div class="profile-menu">
+        <label for="tab-settings" class="profile-menu-btn">Настройки</label>
+        <label for="tab-favorites" class="profile-menu-btn">Избранное</label>
+        <label for="tab-myads" class="profile-menu-btn">Мои объявления</label>
+        <label for="tab-trash" class="profile-menu-btn admin-only" style="background: #ffcccc; color: #cc0000;">Корзина (Удаленные)</label>
+        <a href="#" onclick="logout()" class="profile-menu-btn" style="margin-top: 20px; text-align: center; border: 1px solid #fff; color: #fff; background: transparent;">Выйти</a>
+      </div>
+    </aside>
+    <section class="profile-content">
+      <div class="tab-panel panel-settings">
+        <div class="profile-data-section">
+          <h3>Редактировать профиль</h3>
+          <div class="data-row" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+            <span>Имя пользователя (Ник)</span>
+            <input type="text" id="input-nickname" placeholder="Введите ваш ник" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px;">
+          </div>
+          <div class="data-row" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+            <span>Ссылка на аватарку (URL)</span>
+            <input type="text" id="input-avatar" placeholder="https://example.com/photo.jpg" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px;">
+          </div>
+          <button onclick="saveProfile()" class="btn-primary" style="margin-top: 20px; width: 200px;">Сохранить</button>
+          <h3 style="margin-top: 40px;">Данные аккаунта</h3>
+          <div class="data-row"><span>Номер телефона</span><span>..........</span></div>
+          <div class="data-row"><span>Почта</span><span id="user-email-display">..........</span></div>
+        </div>
+      </div>
+      <div class="tab-panel panel-favorites">
+        <div class="panel-header-tabs">
+          <button class="panel-tab active">Все объявления</button>
+          <button class="panel-tab">Мои подборки</button>
+        </div>
+        <div class="panel-filters">
+          <span>По дате добавления</span>
+          <span>Фильтр</span>
+        </div>
+        <div class="cards-container">
+          <a href="pages/flat-1.html" class="fav-card" id="fav-card-1" style="display: none;">
+            <div class="fav-card-img"><img src="img/1.webp"></div>
+            <div class="fav-card-info"><div class="price">4 790 000₽</div><div class="details">3-комн, 68,2 м2</div><div class="address">Комсомольский проспект, 50</div></div>
+          </a>
+          <a href="pages/flat-2.html" class="fav-card" id="fav-card-2" style="display: none;">
+            <div class="fav-card-img"><img src="img/2.webp"></div>
+            <div class="fav-card-info"><div class="price">3 150 000₽</div><div class="details">2-комн, 42,2 м2</div><div class="address">Юбилейный проспект, 7</div></div>
+          </a>
+          <a href="pages/flat-3.html" class="fav-card" id="fav-card-3" style="display: none;">
+            <div class="fav-card-img"><img src="img/3.webp"></div>
+            <div class="fav-card-info"><div class="price">3 300 000₽</div><div class="details">2-комн, 45,3 м2</div><div class="address">Дорожная 15А</div></div>
+          </a>
+          <a href="pages/flat-4.html" class="fav-card" id="fav-card-4" style="display: none;">
+            <div class="fav-card-img"><img src="img/4.webp"></div>
+            <div class="fav-card-info"><div class="price">6 900 000₽</div><div class="details">3-комн, 50,6 м2</div><div class="address">Ленина 84</div></div>
+          </a>
+          <a href="pages/flat-5.html" class="fav-card" id="fav-card-5" style="display: none;">
+            <div class="fav-card-img"><img src="img/5.webp"></div>
+            <div class="fav-card-info"><div class="price">4 595 000₽</div><div class="details">2-комн, 46,4 м2</div><div class="address">Энергетиков 11</div></div>
+          </a>
+          <a href="pages/flat-6.html" class="fav-card" id="fav-card-6" style="display: none;">
+            <div class="fav-card-img"><img src="img/6.webp"></div>
+            <div class="fav-card-info"><div class="price">5 200 000₽</div><div class="details">2-комн, 55,3 м2</div><div class="address">Березовское шоссе 10</div></div>
+          </a>
+          <a href="pages/flat-7.html" class="fav-card" id="fav-card-7" style="display: none;">
+            <div class="fav-card-img"><img src="img/7.webp"></div>
+            <div class="fav-card-info"><div class="price">7 029 800₽</div><div class="details">2-комн, 58,58 м2</div><div class="address">Строителей 29А</div></div>
+          </a>
+          <a href="pages/flat-8.html" class="fav-card" id="fav-card-8" style="display: none;">
+            <div class="fav-card-img"><img src="img/8.webp"></div>
+            <div class="fav-card-info"><div class="price">4 100 000₽</div><div class="details">1-комн, 37,2 м2</div><div class="address">Дорожная 15</div></div>
+          </a>
+        </div>
+        <div class="empty-state" id="empty-favorites" style="display: none;">
+          <p>У вас пока нет избранных квартир.</p>
+          <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-block; margin-top: 15px;">Перейти к поиску</a>
+        </div>
+      </div>
+      <div class="tab-panel panel-myads">
+        <div class="panel-filters"><span>По дате добавления</span><span>Фильтр</span></div>
+        <div class="cards-container">
+          <div class="add-ad-box"><span>+</span></div>
+        </div>
+      </div>
+      <div class="tab-panel panel-trash">
+        <h3 style="color: #7a8fa6; margin-bottom: 20px;">Удаленные объявления</h3>
+        <div class="cards-container" id="trash-container"></div>
+        <div class="empty-trash" id="empty-trash" style="display: none;">
+          Корзина пуста. Все объявления на месте.
+        </div>
+      </div>
+    </section>
+  </main>
+  <label for="menu-toggle" class="overlay"></label>
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <a href="profile.html" class="sidebar-btn" style="text-decoration: none; display: block; text-align: left;">профиль</a>
+      <button class="sidebar-btn">продажа</button>
+      <button class="sidebar-btn">аренда</button>
+      <button class="sidebar-btn">новые</button>
+      <button class="sidebar-btn">карта</button>
+    </div>
+  </aside>
+  <footer class="simple-footer">
+    <div class="container">
+      <a href="#">О проекте</a>
+      <span class="separator">|</span>
+      <a href="#">Политика конфиденциальности</a>
+      <span class="separator">|</span>
+      <a href="#">Контакты</a>
+    </div>
+  </footer>
+  <script>
+    if (!localStorage.getItem('currentUserEmail')) {
+      window.location.href = 'auth.html';
+    }
+    const currentEmail = localStorage.getItem('currentUserEmail');
+    document.getElementById('user-email-display').innerText = currentEmail;
+    if (localStorage.getItem('isAdmin') === 'true') {
+      document.body.classList.add('is-admin');
+    }
+    if (window.location.hash === '#favorites') {
+      document.getElementById('tab-favorites').checked = true;
+    }
+    function logout() {
+      localStorage.removeItem('currentUserEmail');
+      localStorage.removeItem('isAdmin');
+      window.location.href = 'index.html';
+    }
+    let hasFavs = false;
+    for (let i = 1; i <= 8; i++) {
+      if (localStorage.getItem('flat_' + i) === 'true') {
+        document.getElementById('fav-card-' + i).style.display = 'block';
+        hasFavs = true;
+      }
+    }
+    if (!hasFavs) {
+      document.getElementById('empty-favorites').style.display = 'block';
+    }
+    function loadProfile() {
+      let profiles = JSON.parse(localStorage.getItem('rentnow_profiles')) || {};
+      let myProfile = profiles[currentEmail] || { nickname: 'ник', avatar: '' };
+      if (myProfile.nickname) {
+        document.getElementById('user-nickname').innerText = myProfile.nickname;
+        document.getElementById('input-nickname').value = myProfile.nickname;
+      }
+      if (myProfile.avatar) {
+        let img = document.getElementById('avatar-img');
+        img.src = myProfile.avatar;
+        img.style.display = 'block';
+        document.getElementById('avatar-text').style.display = 'none';
+        document.getElementById('input-avatar').value = myProfile.avatar;
+      }
+    }
+    function saveProfile() {
+      let newNick = document.getElementById('input-nickname').value.trim();
+      let newAvatar = document.getElementById('input-avatar').value.trim();
+      if (!newNick) {
+        alert('Ник не может быть пустым!');
+        return;
+      }
+      let profiles = JSON.parse(localStorage.getItem('rentnow_profiles')) || {};
+      profiles[currentEmail] = { nickname: newNick, avatar: newAvatar };
+      localStorage.setItem('rentnow_profiles', JSON.stringify(profiles));
+      alert('Профиль успешно обновлен!');
+      loadProfile();
+    }
+    loadProfile();
+    const allFlats = [
+      { id: "1", price: "4 790 000₽", details: "3-комн, 68,2 м2", address: "Комсомольский проспект, 50", img: "img/1.webp" },
+      { id: "2", price: "3 150 000₽", details: "2-комн, 42,2 м2", address: "Юбилейный проспект, 7", img: "img/2.webp" },
+      { id: "3", price: "3 300 000₽", details: "2-комн, 45,3 м2", address: "Дорожная 15А", img: "img/3.webp" },
+      { id: "4", price: "6 900 000₽", details: "3-комн, 50,6 м2", address: "Ленина 84", img: "img/4.webp" },
+      { id: "5", price: "4 595 000₽", details: "2-комн, 46,4 м2", address: "Энергетиков 11", img: "img/5.webp" },
+      { id: "6", price: "5 200 000₽", details: "2-комн, 55,3 м2", address: "Березовское шоссе 10", img: "img/6.webp" },
+      { id: "7", price: "7 029 800₽", details: "2-комн, 58,58 м2", address: "Строителей 29А", img: "img/7.webp" },
+      { id: "8", price: "4 100 000₽", details: "1-комн, 37,2 м2", address: "Дорожная 15", img: "img/8.webp" }
+    ];
+    function renderTrash() {
+      const container = document.getElementById('trash-container');
+      const emptyMsg = document.getElementById('empty-trash');
+      container.innerHTML = '';
+      let deleted = JSON.parse(localStorage.getItem('deletedFlats')) || [];
+      if (deleted.length === 0) {
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+      allFlats.forEach(flat => {
+        if (deleted.includes(flat.id)) {
+          const card = document.createElement('div');
+          card.className = 'fav-card';
+          card.innerHTML = `
+            <div class="fav-card-img"><img src="${flat.img}"></div>
+            <div class="fav-card-info">
+              <div class="price">${flat.price}</div>
+              <div class="details">${flat.details}</div>
+              <div class="address">${flat.address}</div>
+              <button class="restore-btn" onclick="restoreFlat('${flat.id}')">Восстановить</button>
+            </div>
+          `;
+          container.appendChild(card);
+        }
+      });
+    }
+    function restoreFlat(id) {
+      let deleted = JSON.parse(localStorage.getItem('deletedFlats')) || [];
+      deleted = deleted.filter(flatId => flatId !== id);
+      localStorage.setItem('deletedFlats', JSON.stringify(deleted));
+      renderTrash();
+      alert('Объявление восстановлено!');
+    }
+    renderTrash();
+  </script>
+</body>
+</html>

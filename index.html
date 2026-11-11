@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentNow — Аренда квартир</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">RentNow</div>
+      <div class="header-actions">
+        <a href="profile.html#favorites" class="icon-btn" title="Избранное">
+          <img src="img/izbr.png" alt="Избранное">
+        </a>
+        <a href="profile.html" class="icon-btn" title="Профиль">
+          <img src="img/prof.png" alt="Профиль">
+        </a>
+        <label for="menu-toggle" class="icon-btn" title="Меню">
+          <img src="img/menu.png" alt="Меню">
+        </label>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="filter">
+      <div class="filter-title">фильтр</div>
+      <div class="filter-row">
+        <div class="input-group">
+          <input type="text" placeholder="Выберите фильтр">
+          <button class="btn-icon">▼</button>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Выберите фильтр">
+          <button class="btn-icon">▼</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="input-group">
+          <input type="text" placeholder="Поиск по адресу">
+          <button class="btn-icon">
+            <img src="img/lupa.png" alt="Поиск">
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="features">
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon1.png"></div><span>ниже рынка</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon2.png"></div><span>риэлтор</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon3.png"></div><span>ипотека</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon4.png"></div><span>на карте</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon5.png"></div><span>все<br>предложения</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon6.png"></div><span>парки<br>рядом</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon7.png"></div><span>строящиеся</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon8.png"></div><span>дома</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon9.png"></div><span>гаражи</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon10.png"></div><span>с ремонтом</span></div>
+      <div class="feature-item"><div class="feature-icon"><img src="img/icon11.png"></div><span>с<br>животными</span></div>
+    </section>
+    <section class="cards-grid">
+      <a href="pages/flat-1.html" class="card" data-id="1">
+        <button class="delete-btn" onclick="deleteFlat(event, '1')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/1.webp" alt="Квартира 1"></div>
+        <div class="card-content">
+          <div class="price">4 790 000₽</div>
+          <div class="details">70 235₽ за м2<br>3-комн, 68,2 м2, 3/9 этаж</div>
+          <div class="address">Комсомольский проспект, 50</div>
+        </div>
+      </a>
+      <a href="pages/flat-2.html" class="card" data-id="2">
+        <button class="delete-btn" onclick="deleteFlat(event, '2')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/2.webp" alt="Квартира 2"></div>
+        <div class="card-content">
+          <div class="price">3 150 000₽</div>
+          <div class="details">94 311₽ за м2<br>2-комн, 42,2 м2, 5/9 этаж</div>
+          <div class="address">Юбилейный проспект, 7</div>
+        </div>
+      </a>
+      <a href="pages/flat-3.html" class="card" data-id="3">
+        <button class="delete-btn" onclick="deleteFlat(event, '3')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/3.webp" alt="Квартира 3"></div>
+        <div class="card-content">
+          <div class="price">3 300 000₽</div>
+          <div class="details">72 848₽ за м2<br>2-комн, 45,3 м2, 7/12 этаж</div>
+          <div class="address">Дорожная 15А</div>
+        </div>
+      </a>
+      <a href="pages/flat-4.html" class="card" data-id="4">
+        <button class="delete-btn" onclick="deleteFlat(event, '4')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/4.webp" alt="Квартира 4"></div>
+        <div class="card-content">
+          <div class="price">6 900 000₽</div>
+          <div class="details">81 000₽ за м2<br>3-комн, 50,6 м2, 6/9 этаж</div>
+          <div class="address">Ленина 84</div>
+        </div>
+      </a>
+      <a href="pages/flat-5.html" class="card" data-id="5">
+        <button class="delete-btn" onclick="deleteFlat(event, '5')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/5.webp" alt="Квартира 5"></div>
+        <div class="card-content">
+          <div class="price">4 595 000₽</div>
+          <div class="details">99 030₽ за м2<br>2-комн, 46,4 м2, 3/10 этаж</div>
+          <div class="address">Энергетиков 11</div>
+        </div>
+      </a>
+      <a href="pages/flat-6.html" class="card" data-id="6">
+        <button class="delete-btn" onclick="deleteFlat(event, '6')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/6.webp" alt="Квартира 6"></div>
+        <div class="card-content">
+          <div class="price">5 200 000₽</div>
+          <div class="details">94 031₽ за м2<br>2-комн, 55,3 м2, 5/11 этаж</div>
+          <div class="address">Березовское шоссе 10</div>
+        </div>
+      </a>
+      <a href="pages/flat-7.html" class="card" data-id="7">
+        <button class="delete-btn" onclick="deleteFlat(event, '7')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/7.webp" alt="Квартира 7"></div>
+        <div class="card-content">
+          <div class="price">7 029 800₽</div>
+          <div class="details">120 000₽ за м2<br>2-комн, 58,58 м2, 10/25 этаж</div>
+          <div class="address">Строителей 29А</div>
+        </div>
+      </a>
+      <a href="pages/flat-8.html" class="card" data-id="8">
+        <button class="delete-btn" onclick="deleteFlat(event, '8')" title="Удалить">✖</button>
+        <div class="card-image"><img src="img/8.webp" alt="Квартира 8"></div>
+        <div class="card-content">
+          <div class="price">4 100 000₽</div>
+          <div class="details">95 235₽ за м2<br>1-комн, 37,2 м2, 6/9 этаж</div>
+          <div class="address">Дорожная 15</div>
+        </div>
+      </a>
+    </section>
+  </main>
+  <label for="menu-toggle" class="overlay"></label>
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <a href="profile.html" class="sidebar-btn" style="text-decoration: none; display: block; text-align: left;">профиль</a>
+      <button class="sidebar-btn">продажа</button>
+      <button class="sidebar-btn">аренда</button>
+      <button class="sidebar-btn">новые</button>
+      <button class="sidebar-btn">карта</button>
+      <button class="sidebar-btn">с животными</button>
+      <button class="sidebar-btn">риэлтор</button>
+      <button class="sidebar-btn">фильтры</button>
+    </div>
+  </aside>
+  <footer class="simple-footer">
+    <div class="container">
+      <a href="#">О проекте</a>
+      <span class="separator">|</span>
+      <a href="#">Политика конфиденциальности</a>
+      <span class="separator">|</span>
+      <a href="#">Контакты</a>
+    </div>
+  </footer>
+  <script>
+    if (localStorage.getItem('isAdmin') === 'true') {
+      document.body.classList.add('is-admin');
+    }
+    let deleted = JSON.parse(localStorage.getItem('deletedFlats')) || [];
+    deleted.forEach(id => {
+      let card = document.querySelector('.card[data-id="' + id + '"]');
+      if (card) card.style.display = 'none';
+    });
+    function deleteFlat(event, id) {
+      event.preventDefault();
+      if (confirm('Вы уверены, что хотите удалить это объявление?')) {
+        let deleted = JSON.parse(localStorage.getItem('deletedFlats')) || [];
+        if (!deleted.includes(id)) {
+          deleted.push(id);
+          localStorage.setItem('deletedFlats', JSON.stringify(deleted));
+        }
+        event.target.closest('.card').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
